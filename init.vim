@@ -50,9 +50,9 @@ let g:startify_custom_header = [
 "панель
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#formatter = 'unique_tailo'
-"lua config
 "кодировка
 set encoding=UTF-8
+"lua config
 lua << EOF
 require'nvim-treesitter.configs'.setup {
    ensure_installed = {  "lua", "python" },
