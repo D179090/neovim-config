@@ -14,13 +14,11 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 "плагины
 call plug#begin()
-"Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'https://github.com/preservim/nerdtree'
 Plug 'mhinz/vim-startify'
 Plug 'https://github.com/folke/tokyonight.nvim'
-"Plug 'vim-airline/vim-airline-themes'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
