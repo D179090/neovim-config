@@ -10,6 +10,8 @@ int main(){
 		cin >> a;
 		if  (a == "yes"){
 				system("git clone https://github.com/D179090/neovim-config");
+				system("cd && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' && cd neovim-config")
 				system("mv neovim-config/vimrc neovim-config/.vimrc");
 				system("mkdir -p $HOME/.config/nvim");
 				system("mv /neovim-config/.vimrc $HOME/.config/nvim/");
