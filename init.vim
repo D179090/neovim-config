@@ -24,6 +24,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'https://github.com/NvChad/nvim-colorizer.lua'
 call plug#end()
 "тема
 colorscheme tokyonight-storm
@@ -130,4 +131,5 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
+
 EOF
