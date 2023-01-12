@@ -25,6 +25,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/NvChad/nvim-colorizer.lua'
+Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 "тема
 colorscheme tokyonight-storm
@@ -77,6 +78,12 @@ require'nvim-treesitter.configs'.setup {
 
        additional_vim_regex_highlighting = false,
   },
+}
+--indent_blankline
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    show_current_context = true,
+    show_current_context_start = true,
 }
 --выпадающее меню coc.nvim
 -- highlight
