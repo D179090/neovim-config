@@ -17,7 +17,6 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'https://github.com/preservim/nerdtree'
-Plug 'mhinz/vim-startify'
 Plug 'https://github.com/folke/tokyonight.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lualine/lualine.nvim'
@@ -26,6 +25,9 @@ Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/NvChad/nvim-colorizer.lua'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'mhinz/vim-startify'
 call plug#end()
 "тема
 colorscheme tokyonight-storm
@@ -36,6 +38,8 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 "бинды выход
 "nnoremap <C-r> :wq<CR>
 "nnoremap <C-y> :qa<CR>
+"бинды telescope
+nnoremap <C-f> :Telescope find_files<CR>
 "скрытые файлы nerdtree 
 let NERDTreeShowHidden=1
 "картинка
@@ -54,8 +58,19 @@ let g:startify_custom_header = [
 set encoding=UTF-8
 "lua config
 lua << EOF
+--telescope
+require("telescope").setup { 
+    pickers = {
+        live_grep = {
+            additional_args = function(opts)
+                return {"--hidden"}
+            end
+        },
+    },
+}
+--treesitter
 require'nvim-treesitter.configs'.setup {
-   ensure_installed = {  "lua", "python" },
+   ensure_installed = {  "lua", "cpp" },
 
     sync_install = false,
 
@@ -140,3 +155,4 @@ require('lualine').setup {
 }
 
 EOF
+
