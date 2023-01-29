@@ -27,7 +27,8 @@ Plug 'https://github.com/NvChad/nvim-colorizer.lua'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
-Plug 'mhinz/vim-startify'
+"Plug 'mhinz/vim-startify'
+Plug 'https://github.com/goolord/alpha-nvim'
 call plug#end()
 "тема
 colorscheme tokyonight-storm
@@ -43,14 +44,14 @@ nnoremap <C-f> :Telescope find_files<CR>
 "скрытые файлы nerdtree 
 let NERDTreeShowHidden=1
 "картинка
-let g:startify_custom_header = [
-            \ '███╗   ██╗██╗   ██╗      ██╗██████╗ ███████╗',
-            \ '████╗  ██║██║   ██║      ██║██╔══██╗██╔════╝',
-            \ '██╔██╗ ██║██║   ██║█████╗██║██║  ██║█████╗',
-            \ '██║╚██╗██║╚██╗ ██╔╝╚════╝██║██║  ██║██╔══╝',
-            \ '██║ ╚████║ ╚████╔╝       ██║██████╔╝███████╗',
-            \ '╚═╝  ╚═══╝  ╚═══╝        ╚═╝╚═════╝ ╚══════╝',
-            \ ]
+"let g:startify_custom_header = [
+"            \ '███╗   ██╗██╗   ██╗      ██╗██████╗ ███████╗',
+"            \ '████╗  ██║██║   ██║      ██║██╔══██╗██╔════╝',
+"            \ '██╔██╗ ██║██║   ██║█████╗██║██║  ██║█████╗',
+"            \ '██║╚██╗██║╚██╗ ██╔╝╚════╝██║██║  ██║██╔══╝',
+"            \ '██║ ╚████║ ╚████╔╝       ██║██████╔╝███████╗',
+"            \ '╚═╝  ╚═══╝  ╚═══╝        ╚═╝╚═════╝ ╚══════╝',
+"            \ ]
 "панель
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#formatter = 'unique_tailo'
@@ -58,6 +59,35 @@ let g:startify_custom_header = [
 set encoding=UTF-8
 "lua config
 lua << EOF
+--alpha
+local alpha = require("alpha")
+local dashboard = require("alpha.themes.dashboard")
+
+dashboard.section.header.val = {
+' ▄▄    ▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄   ▄▄ ▄▄▄ ▄▄   ▄▄   ',
+'█  █  █ █       █       █  █ █  █   █  █▄█  █  ',
+'█   █▄█ █    ▄▄▄█   ▄   █  █▄█  █   █       █  ',
+'█       █   █▄▄▄█  █ █  █       █   █       █  ',
+'█  ▄    █    ▄▄▄█  █▄█  █       █   █       █  ',
+'█ █ █   █   █▄▄▄█       ██     ██   █ ██▄██ █  ',
+'█▄█  █▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█ █▄▄▄█ █▄▄▄█▄█   █▄█  ',
+
+}
+dashboard.section.buttons.val = {
+    dashboard.button( "o", "  > Open file manager", ":NERDTree<CR>" ),
+    dashboard.button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
+    dashboard.button( "f", "  > Find file", ":cd $HOME/ | Telescope find_files<CR>"),
+    dashboard.button( "r", "  > Recent"   , ":Telescope oldfiles<CR>"),
+    dashboard.button( "q", "  > Quit NVIM", ":qa<CR>"),
+}
+
+-- Send config to alpha
+alpha.setup(dashboard.opts)
+
+-- Disable folding on alpha buffer
+vim.cmd([[
+    autocmd FileType alpha setlocal nofoldenable
+]])
 --telescope
 require("telescope").setup { 
     pickers = {
