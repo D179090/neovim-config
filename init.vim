@@ -1,6 +1,4 @@
-:set number
-:set relativenumber
-:set autoindent
+:set number :set relativenumber :set autoindent
 :set tabstop=4
 :set smarttab
 :set mouse+=a
@@ -33,6 +31,19 @@ call plug#end()
 "тема
 colorscheme tokyonight-storm
 "let g:airline_theme='deus'
+"barbar
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.animation = v:true
+let bufferline.auto_hide = v:true
+let bufferline.highlight_alternate = v:true
+let bufferline.highlight_inactive_file_icons = v:true
+let bufferline.icons = v:true
+"конфиг закладок
+let bufferline.icon_separator_active = '▎'
+let bufferline.icon_separator_inactive = '▎'
+let bufferline.icon_close_tab = ''
+let bufferline.icon_close_tab_modified = '●'
+let bufferline.icon_pinned = '車'
 "бинды nerdtree 
 nnoremap <C-t> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
@@ -93,7 +104,6 @@ require("telescope").setup {
     pickers = {
         live_grep = {
             additional_args = function(opts)
-                return {"--hidden"}
             end
         },
     },
@@ -185,4 +195,3 @@ require('lualine').setup {
 }
 
 EOF
-
