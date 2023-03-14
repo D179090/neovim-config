@@ -1,9 +1,14 @@
-:set number :set relativenumber :set autoindent
-:set tabstop=4
+:set number 
+:set relativenumber 
+:set autoindent
 :set smarttab
 :set mouse+=a
 :set syntax=on
 :set clipboard+=unnamedplus
+:set tabstop=4
+:set shiftwidth=4
+:set softtabstop=4
+:set expandtab
 "автоподстановка
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
@@ -19,9 +24,8 @@ Plug 'https://github.com/folke/tokyonight.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'romgrk/barbar.nvim'
+"Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'https://github.com/NvChad/nvim-colorizer.lua'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
@@ -44,7 +48,7 @@ let bufferline.icon_separator_inactive = '▎'
 let bufferline.icon_close_tab = ''
 let bufferline.icon_close_tab_modified = '●'
 let bufferline.icon_pinned = '車'
-"бинды nerdtree 
+"бинды nerdtree
 nnoremap <C-t> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 "бинды выход
@@ -52,6 +56,7 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 "nnoremap <C-y> :qa<CR>
 "бинды telescope
 nnoremap <C-f> :Telescope find_files<CR>
+nnoremap <C-r> :Telescope oldfiles<CR>
 "скрытые файлы nerdtree 
 let NERDTreeShowHidden=1
 "картинка
@@ -193,5 +198,6 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
-
 EOF
+
+inoremap shift <Tab>
