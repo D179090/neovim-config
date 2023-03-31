@@ -24,16 +24,17 @@ Plug 'https://github.com/folke/tokyonight.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'romgrk/barbar.nvim'
+"Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 "Plug 'mhinz/vim-startify'
 Plug 'https://github.com/goolord/alpha-nvim'
+"Plug 'andweeb/presence.nvim'
 call plug#end()
 "тема
-colorscheme tokyonight-storm
+colorscheme gruvbox
 "let g:airline_theme='deus'
 "barbar
 let bufferline = get(g:, 'bufferline', {})
@@ -97,7 +98,7 @@ dashboard.section.buttons.val = {
     dashboard.button( "q", "  > Quit NVIM", ":qa<CR>"),
 }
 
--- Send config to alpha
+--Send config to alpha
 alpha.setup(dashboard.opts)
 
 -- Disable folding on alpha buffer
@@ -115,11 +116,11 @@ require("telescope").setup {
 }
 --treesitter
 require'nvim-treesitter.configs'.setup {
-   ensure_installed = {  "lua", "cpp" },
+   ensure_installed = { "python", "lua", "cpp" },
 
     sync_install = false,
 
-   auto_install = false,
+    auto_install = false,
 
     ignore_install = { "javascript" },
 
@@ -161,7 +162,7 @@ vim.api.nvim_set_hl(0, "CocUnusedHighlight", { underline = true })
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'tokyonight',
+    theme = 'gruvbox',
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
@@ -198,6 +199,25 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
+--discord
+--require("presence").setup({
+--auto_update         = true,
+--neovim_image_text   = "The One True Text Editor",
+--main_image          = "neovim", 
+--client_id           = "793271441293967371",
+--log_level           = nil,
+--debounce_timeout    = 10,
+--enable_line_number  = true,
+--blacklist           = {},
+--buttons             = true,
+--file_assets         = {},
+--show_time           = true,
+--editing_text        = "Editing %s",
+--file_explorer_text  = "Browsing %s",
+--git_commit_text     = "Committing changes",
+--plugin_manager_text = "Managing plugins",
+--reading_text        = "Reading %s",
+--workspace_text      = "Working on %s",
+--line_number_text    = "Line %s out of %s",
+--})
 EOF
-
-inoremap shift <Tab>
