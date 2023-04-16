@@ -32,6 +32,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 "Plug 'mhinz/vim-startify'
 Plug 'https://github.com/goolord/alpha-nvim'
 "Plug 'andweeb/presence.nvim'
+Plug 'https://github.com/ap/vim-css-color'
 call plug#end()
 "тема
 colorscheme gruvbox
@@ -42,7 +43,7 @@ let bufferline.animation = v:true
 let bufferline.auto_hide = v:true
 let bufferline.highlight_alternate = v:true
 let bufferline.highlight_inactive_file_icons = v:true
-let bufferline.icons = v:true
+let bufferline.icons = v:false"true
 "конфиг закладок
 let bufferline.icon_separator_active = '▎'
 let bufferline.icon_separator_inactive = '▎'
