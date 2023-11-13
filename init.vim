@@ -28,28 +28,19 @@ Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
 "Plug 'mhinz/vim-startify'
 Plug 'https://github.com/goolord/alpha-nvim'
 "Plug 'andweeb/presence.nvim'
 Plug 'https://github.com/ap/vim-css-color'
+Plug 'https://github.com/sainnhe/everforest'
+Plug 'https://github.com/rebelot/kanagawa.nvim'
 call plug#end()
 "тема
-colorscheme gruvbox
+set background=dark
+let g:everforest_background = "dark"
+colorscheme kanagawa-wave
 "let g:airline_theme='deus'
-"barbar
-let bufferline = get(g:, 'bufferline', {})
-let bufferline.animation = v:true
-let bufferline.auto_hide = v:true
-let bufferline.highlight_alternate = v:true
-let bufferline.highlight_inactive_file_icons = v:true
-let bufferline.icons = v:false"true
-"конфиг закладок
-let bufferline.icon_separator_active = '▎'
-let bufferline.icon_separator_inactive = '▎'
-let bufferline.icon_close_tab = ''
-let bufferline.icon_close_tab_modified = '●'
-let bufferline.icon_pinned = '車'
 "бинды nerdtree
 nnoremap <C-t> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
@@ -142,11 +133,11 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 --indent_blankline
-require("indent_blankline").setup {
+--require("indent_blankline").setup {
     -- for example, context is off by default, use this to turn it on
-    show_current_context = true,
-    show_current_context_start = true,
-}
+--    show_current_context = true,
+--    show_current_context_start = true,
+--}
 --выпадающее меню coc.nvim
 -- highlight
 -- for custom pop menu
@@ -163,7 +154,7 @@ vim.api.nvim_set_hl(0, "CocUnusedHighlight", { underline = true })
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox',
+    theme = 'everforest',
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
