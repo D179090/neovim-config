@@ -22,15 +22,15 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'https://github.com/preservim/nerdtree'
 Plug 'https://github.com/folke/tokyonight.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'romgrk/barbar.nvim'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'nvim-lualine/lualine.nvim'
+"Plug 'kyazdani42/nvim-web-devicons'
+"Plug 'romgrk/barbar.nvim'
+"Plug 'ryanoasis/vim-devicons'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
 "Plug 'mhinz/vim-startify'
-Plug 'https://github.com/goolord/alpha-nvim'
+"Plug 'https://github.com/goolord/alpha-nvim'
 "Plug 'andweeb/presence.nvim'
 Plug 'https://github.com/ap/vim-css-color'
 Plug 'https://github.com/sainnhe/everforest'
@@ -69,34 +69,34 @@ set encoding=UTF-8
 "lua config
 lua << EOF
 --alpha
-local alpha = require("alpha")
-local dashboard = require("alpha.themes.dashboard")
+--local alpha = require("alpha")
+--local dashboard = require("alpha.themes.dashboard")
 
-dashboard.section.header.val = {
-' ▄▄    ▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄   ▄▄ ▄▄▄ ▄▄   ▄▄   ',
-'█  █  █ █       █       █  █ █  █   █  █▄█  █  ',
-'█   █▄█ █    ▄▄▄█   ▄   █  █▄█  █   █       █  ',
-'█       █   █▄▄▄█  █ █  █       █   █       █  ',
-'█  ▄    █    ▄▄▄█  █▄█  █       █   █       █  ',
-'█ █ █   █   █▄▄▄█       ██     ██   █ ██▄██ █  ',
-'█▄█  █▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█ █▄▄▄█ █▄▄▄█▄█   █▄█  ',
+--dashboard.section.header.val = {
+--' ▄▄    ▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄   ▄▄ ▄▄▄ ▄▄   ▄▄   ',
+--'█  █  █ █       █       █  █ █  █   █  █▄█  █  ',
+--'█   █▄█ █    ▄▄▄█   ▄   █  █▄█  █   █       █  ',
+--'█       █   █▄▄▄█  █ █  █       █   █       █  ',
+--'█  ▄    █    ▄▄▄█  █▄█  █       █   █       █  ',
+--'█ █ █   █   █▄▄▄█       ██     ██   █ ██▄██ █  ',
+--'█▄█  █▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█ █▄▄▄█ █▄▄▄█▄█   █▄█  ',
 
-}
-dashboard.section.buttons.val = {
-    dashboard.button( "o", "  > Open file manager", ":NERDTree<CR>" ),
-    dashboard.button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
-    dashboard.button( "f", "󰈞  > Find file", ":cd $HOME/ | Telescope find_files<CR>"),
-    dashboard.button( "r", "  > Recent"   , ":Telescope oldfiles<CR>"),
-    dashboard.button( "q", "󰩈  > Quit NVIM", ":qa<CR>"),
-}
+--}
+--dashboard.section.buttons.val = {
+--    dashboard.button( "o", "  > Open file manager", ":NERDTree<CR>" ),
+--    dashboard.button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
+--    dashboard.button( "f", "󰈞  > Find file", ":cd $HOME/ | Telescope find_files<CR>"),
+---    dashboard.button( "r", "  > Recent"   , ":Telescope oldfiles<CR>"),
+--    dashboard.button( "q", "󰩈  > Quit NVIM", ":qa<CR>"),
+--}
 
 --Send config to alpha
-alpha.setup(dashboard.opts)
+--alpha.setup(dashboard.opts)
 
 -- Disable folding on alpha buffer
-vim.cmd([[
-    autocmd FileType alpha setlocal nofoldenable
-]])
+--vim.cmd([[
+--    autocmd FileType alpha setlocal nofoldenable
+--]])
 --telescope
 require("telescope").setup { 
     pickers = {
@@ -150,47 +150,7 @@ vim.api.nvim_set_hl(0, "CocMenuSel", { bg = "#3c3836", bold = true })
 vim.api.nvim_set_hl(0, "CocSearch", { fg = "#fabd2f" })
 -- unused code
 vim.api.nvim_set_hl(0, "CocUnusedHighlight", { underline = true })
---lualine
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'everforest',
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
-    disabled_filetypes = {
-      statusline = {},
-      winbar = {},
-    },
-    ignore_focus = {},
-    always_divide_middle = true,
-    globalstatus = false,
-    refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
-    }
-  },
-  sections = {
-		  lualine_a = { 'mode'},
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = {},
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location' }
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = { 'filename' },
-    lualine_x = { 'location' },
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  winbar = {},
-  inactive_winbar = {},
-  extensions = {}
-}
+
 --discord
 --require("presence").setup({
 --auto_update         = true,
