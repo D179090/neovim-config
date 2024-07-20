@@ -31,7 +31,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
 "Plug 'mhinz/vim-startify'
 "Plug 'https://github.com/goolord/alpha-nvim'
-"Plug 'andweeb/presence.nvim'
+Plug 'andweeb/presence.nvim'
 Plug 'https://github.com/ap/vim-css-color'
 Plug 'https://github.com/sainnhe/everforest'
 Plug 'https://github.com/rebelot/kanagawa.nvim'
